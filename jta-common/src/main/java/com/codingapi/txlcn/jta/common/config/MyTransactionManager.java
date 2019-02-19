@@ -1,4 +1,4 @@
-package com.codingapi.txlcn.config;
+package com.codingapi.txlcn.jta.common.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,12 +9,12 @@ import javax.naming.Referenceable;
 import javax.transaction.*;
 import java.io.Serializable;
 
-public class UserTransactionManager implements TransactionManager, Serializable, Referenceable, UserTransaction {
+public class MyTransactionManager implements TransactionManager, Serializable, Referenceable {
 
-    private final static Logger log = LoggerFactory.getLogger(UserTransactionManager.class);
+    private final static Logger log = LoggerFactory.getLogger(MyTransactionManager.class);
 
-    public UserTransactionManager() {
-        log.info("UserTransactionManager");
+    public MyTransactionManager() {
+        log.info("MyTransactionManager");
     }
 
     @Override

@@ -1,7 +1,8 @@
 package com.codingapi.txlcn.jta;
 
-import com.codingapi.txlcn.TxLcnXADataSourceWrapper;
-import com.codingapi.txlcn.config.UserTransactionManager;
+import com.codingapi.txlcn.jta.common.TxLcnXADataSourceWrapper;
+import com.codingapi.txlcn.jta.common.config.MyTransactionManager;
+import com.codingapi.txlcn.jta.common.config.MyUserTransaction;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
@@ -33,11 +34,17 @@ public class TxLcnJtaConfiguration {
     }
 
 
+    @Bean
+    @ConditionalOnMissingBean
+    public MyTransactionManager myTransactionManager() throws Exception {
+        MyTransactionManager manager = new MyTransactionManager();
+        return manager;
+    }
 
     @Bean
     @ConditionalOnMissingBean
-    public UserTransactionManager atomikosTransactionManager() throws Exception {
-        UserTransactionManager manager = new UserTransactionManager();
+    public MyUserTransaction myUserTransaction() throws Exception {
+        MyUserTransaction manager = new MyUserTransaction();
         return manager;
     }
 

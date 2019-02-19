@@ -1,4 +1,4 @@
-package com.codingapi.txlcn.aop;
+package com.codingapi.txlcn.jta.common.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

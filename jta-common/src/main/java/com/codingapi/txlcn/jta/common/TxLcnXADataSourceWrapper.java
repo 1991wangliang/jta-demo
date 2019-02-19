@@ -1,4 +1,4 @@
-package com.codingapi.txlcn;
+package com.codingapi.txlcn.jta.common;
 
 import org.springframework.boot.jdbc.XADataSourceWrapper;
 

@@ -8,8 +8,12 @@ import javax.naming.Reference;
 import javax.naming.Referenceable;
 import javax.transaction.*;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyUserTransaction implements  Serializable, Referenceable, UserTransaction {
+
+    private Map<Thread,Integer> state = new HashMap<>();
 
     private final static Logger log = LoggerFactory.getLogger(MyUserTransaction.class);
 
@@ -36,7 +40,12 @@ public class MyUserTransaction implements  Serializable, Referenceable, UserTran
     @Override
     public int getStatus() throws SystemException {
         log.info("getStatus");
-        return 0;
+        Integer status =  state.get(Thread.currentThread());
+        if(status==null) {
+            state.put(Thread.currentThread(),Status.STATUS_ACTIVE);
+            return Status.STATUS_NO_TRANSACTION;
+        }
+        return status;
     }
 
 

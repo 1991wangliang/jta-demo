@@ -42,7 +42,7 @@ public class MyTransactionManager implements TransactionManager, Serializable, R
     @Override
     public Transaction getTransaction() throws SystemException {
         log.info("getTransaction");
-        return null;
+        return new MyTransaction();
     }
 
     @Override
@@ -68,6 +68,6 @@ public class MyTransactionManager implements TransactionManager, Serializable, R
     @Override
     public Transaction suspend() throws SystemException {
         log.info("suspend");
-        return null;
+        return new MyTransaction();
     }
 }

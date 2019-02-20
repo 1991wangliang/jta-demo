@@ -1,5 +1,6 @@
 package com.codingapi.jta.example;
 
+import com.codingapi.jta.example.exception.MyException;
 import com.codingapi.jta.example.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,10 @@ public class JtaExampleApplication  {
 
     @PostConstruct
     public void start(){
-        demoService.save();
+        try {
+            demoService.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
